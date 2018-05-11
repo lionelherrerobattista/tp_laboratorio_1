@@ -3,6 +3,7 @@
 
 typedef struct {
 
+    int id;
     char nombre[50];
     int edad;
     int estado;
@@ -27,7 +28,16 @@ int obtenerEspacioLibre(EPersona[],int);
 
 void inicializarPersona (EPersona[], int);
 void inicializarPersonaHardCode (EPersona[], int);
+
 void altaPersona (EPersona[], int);
+int siguienteId(EPersona[], int);
+int obtenerEspacioLibre(EPersona[], int);
+
+void mostrarPersonas (EPersona [],EPersona, int);
+
+void borrarPersona (EPersona[], int);
+
+void graficoEdad (EPersona[], int);
 
 
 
