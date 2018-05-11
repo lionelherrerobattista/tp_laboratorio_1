@@ -1,8 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <strings.h>
-
+#include <ctype.h>
 #include "funciones.h"
+
 #define LIBRE 0
 #define OCUPADO 1
 
@@ -42,6 +43,8 @@ void inicializarPersonaHardCode (EPersona personas[], int limite)
 void altaPersona (EPersona personas[], int limite)
 {
     int index;
+    int comprobacion=0;
+    char auxiliarNombre[50]={};
 
 
     index=obtenerEspacioLibre(personas, limite);
@@ -50,7 +53,18 @@ void altaPersona (EPersona personas[], int limite)
     {
         printf("\nIngrese el nombre: ");
         fflush(stdin);
-        gets(personas[index].nombre);
+        gets(auxiliarNombre);
+        comprobacion=esChar(auxiliarNombre);
+
+        while (comprobacion==0)
+        {
+                printf("\nError. Ingrese el nombre: ");
+                fflush(stdin);
+                gets(auxiliarNombre);
+                comprobacion=esChar(auxiliarNombre);
+        }
+        strcpy(personas[index].nombre,auxiliarNombre);
+
 
         printf("\nIngrese la edad: ");
         scanf("%d", &personas[index].edad);
@@ -68,6 +82,24 @@ void altaPersona (EPersona personas[], int limite)
     {
         printf("\nNo hay lugar.");
     }
+}
+
+int esChar (char auxiliar[])
+{
+    int i;
+    int retorno;
+    int limite;
+
+    limite=strlen(auxiliar);
+
+
+    for (i=0;i<limite;i++)
+    {
+        retorno=isalpha(auxiliar[i]);
+    }
+
+    return retorno;
+
 }
 
 int obtenerEspacioLibre(EPersona personas[], int limite)
