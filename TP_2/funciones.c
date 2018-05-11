@@ -15,19 +15,20 @@ void inicializarPersona (EPersona personas[], int limite)
     {
         personas[i].estado=LIBRE;
         personas[i].id=0;
+        personas[i].edad=0;
     }
 }
 
 void inicializarPersonaHardCode (EPersona personas[], int limite)
 {
-    int id[5]={100,101,102,103,104};
-    char nombre[][50]= {"Juan","Maria","Pedro","Vanesa","Jose"};
-    int edad[5]={22,13,56,87,55};
-    int dni[5]={38654789,45654821,20951753,123856,21111478};
+    int id[10]={100,101,102,103,104,105,106,107,108,109};
+    char nombre[][50]= {"Juan","Maria","Pedro","Vanesa","Jose","Luis","Guillermo","Laura","Agustin","Paula"};
+    int edad[10]={22,13,56,87,55,5,20,33,19,25};
+    int dni[10]={38654789,45654821,20951753,123856,21111478,45236854,40111222,32654984,39654128,37569845};
 
     int i;
 
-    for (i=0; i<5; i++)
+    for (i=0; i<10; i++)
     {
         personas[i].id=id[i];
         strcpy(personas[i].nombre,nombre[i]);
@@ -146,6 +147,8 @@ void borrarPersona (EPersona personas[], int limite)
     int id;
     int i;
 
+
+
     printf("\nIngrese el id de la persona que quiere borrar: ");
     scanf("%d",&id);
 
@@ -161,31 +164,64 @@ void borrarPersona (EPersona personas[], int limite)
 void graficoEdad (EPersona personas[], int limite)
 {
     int i;
-    //int j=1;
-    char rangoUno[][20]={};
-    char rangoDos[][20]={};
-    char rangoTres[][20]={};
+    int j;
+    int edades[3]={};//1.<18,2.18-35,3.+35
+    int flag=0;
+    int max;
 
+    printf(" \n");
     for (i=0; i<limite; i++)
     {
-        if (personas[i].edad<18)
+        if (personas[i].estado==OCUPADO)
         {
-            strcpy(rangoUno,"*");
-        }
-        else
-        {
-            if (personas[i].edad>=18 && personas[i].edad<=35)
+            if (personas[i].edad>35)
             {
-               strcpy(rangoDos,"*");
+                edades[2]=edades[2]+1;
             }
             else
             {
-                strcpy(rangoTres,"*");
+                if (personas[i].edad>=18 && personas[i].edad<=35)
+                {
+                   edades[1]=edades[1]+1;
+                }
+                else
+                {
+                    edades[0]=edades[0]+1;
+                }
             }
+
         }
     }
 
-    printf("%-5s %-5s %-5s",rangoUno,rangoDos,rangoTres);
+    for (i=0; i<3;i++)
+    {
+        if(flag==0 || edades[i]>max)
+        {
+            max=edades[i];
+            flag=1;
+        }
+    }
+
+    for (i=max;i>0;i--)
+    {
+        printf("%5d-", i);
+
+        for (j=0;j<3;j++)
+        {
+            if (edades[j]>=i)
+            {
+                printf("  *  ");
+            }
+            else
+            {
+                printf("     ");
+            }
+        }
+        printf("\n");
+    }
+
+    printf("       <18 19-35 >35\n");
+
 }
 
 

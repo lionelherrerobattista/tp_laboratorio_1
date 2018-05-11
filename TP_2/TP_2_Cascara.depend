@@ -6,15 +6,15 @@
 
 1525981138 c:\users\lio\desktop\tp_2_cascara\funciones.h
 
-1526064146 source:c:\users\lio\desktop\tp\tp_2\funciones.c
+1526074495 source:c:\users\lio\desktop\tp\tp_2\funciones.c
 	<stdlib.h>
 	<stdio.h>
 	<strings.h>
 	"funciones.h"
 
-1526064145 c:\users\lio\desktop\tp\tp_2\funciones.h
+1526073440 c:\users\lio\desktop\tp\tp_2\funciones.h
 
-1526064164 source:c:\users\lio\desktop\tp\tp_2\main.c
+1526074587 source:c:\users\lio\desktop\tp\tp_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"funciones.h"

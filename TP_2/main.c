@@ -38,6 +38,7 @@ int main()
             printf("5- Salir\n");
             printf("\nIngrese una opcion: ");
             scanf("%d",&opcion);
+
         }
 
         switch(opcion)
@@ -53,7 +54,7 @@ int main()
                 mostrarPersonas(listaDePersonas,auxiliar, TAM);
                 break;
             case 4:
-                graficoEdad(listaDePersonas,TAM);
+                graficoEdad(listaDePersonas, TAM);
                 break;
             case 5:
                 seguir = 'n';
