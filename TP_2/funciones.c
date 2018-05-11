@@ -146,18 +146,26 @@ void borrarPersona (EPersona personas[], int limite)
 {
     int id;
     int i;
+    int flag=0;
 
 
 
     printf("\nIngrese el id de la persona que quiere borrar: ");
     scanf("%d",&id);
 
+
     for (i=0; i<limite; i++)
     {
         if (personas[i].id==id)
         {
            personas[i].estado=LIBRE;
+           flag=1;
         }
+    }
+
+    if(flag==0)
+    {
+        printf("\nEl id ingresado no es valido.\n");
     }
 }
 

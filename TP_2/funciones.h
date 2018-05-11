@@ -26,18 +26,80 @@ int obtenerEspacioLibre(EPersona[],int);
  */
 //int buscarPorDni(EPersona lista[], int dni);
 
+
+/** \brief Iniciliza todos los datos en 0
+ *
+ * \param EPersona[] estructura persona
+ * \param int cantidad máxima de personas
+ * \return void
+ *
+ */
 void inicializarPersona (EPersona[], int);
+
+
+/** \brief Hardcode de los datos de las personas
+ *
+ * \param EPersona[] estructura persona
+ * \param int cantidad máxima de personas
+ * \return void
+ *
+ */
 void inicializarPersonaHardCode (EPersona[], int);
 
+/** \brief Agrega una persona a la lista
+ *
+ * \param EPersona[] estructura persona
+ * \param int cantidad máxima de personas
+ * \return void
+ *
+ */
 void altaPersona (EPersona[], int);
+
+/** \brief Busca el id libre que sigue al último utilizado
+ *
+ * \param EPersona[] estructura personas
+ * \param int cantidad máxima de personas
+ * \return int devuelve el id libre que sigue al último ocupado
+ *
+ */
 int siguienteId(EPersona[], int);
+
+/** \brief Busca un espacio libre para guardar los datos en el array de persona
+ *
+ * \param EPersona[] estructura persona
+ * \param int cantidad máxima de personas
+ * \return int devuelve el índice libre
+ *
+ */
 int obtenerEspacioLibre(EPersona[], int);
 
-void mostrarPersonas (EPersona [],EPersona, int);
+/** \brief Muestra las personas ordenadas alfabéticamente
+ *
+ * \param [] EPersona estructura persona
+ * \param EPersona auxiliar para realizar el ordenamiento
+ * \param int cantidad máxima de personas
+ * \return void
+ *
+ */
+void mostrarPersonas(EPersona [],EPersona, int);
 
-void borrarPersona (EPersona[], int);
+/** \brief Solicita el id de la persona y la borra de la lista
+ *
+ * \param EPersona[] estructura persona
+ * \param int cantidad máxima de personas
+ * \return void
+ *
+ */
+void borrarPersona(EPersona[], int);
 
-void graficoEdad (EPersona[], int);
+/** \brief Realiza un gráfico de la cantidad de personas distribuidas en 3 rangos etarios <18 18-35 >35
+ *
+ * \param EPersona[] estructura persona
+ * \param int cantidad máxima de personas
+ * \return void
+ *
+ */
+void graficoEdad(EPersona[], int);
 
 
 
