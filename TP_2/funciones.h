@@ -56,14 +56,17 @@ void inicializarPersonaHardCode (EPersona[], int);
 void altaPersona (EPersona[], int);
 
 
-/** \brief Comprueba que el dato ingresado sea de tipo char
+
+/** \brief Verifica que se solo se haya ingresado el tipo de dato char
  *
- * \param EPersona[] estructura persona
- * \param int indice
- * \return int 0 si no es char
+ * \param char[] variable auxiliar de verificación
+ * \return int devuelve 0 si no es char
  *
  */
-int esChar(EPersona[], int);
+int esChar(char[]);
+
+//int esInt(char[]);
+
 
 /** \brief Busca el id libre que sigue al último utilizado
  *

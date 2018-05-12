@@ -43,8 +43,8 @@ void inicializarPersonaHardCode (EPersona personas[], int limite)
 void altaPersona (EPersona personas[], int limite)
 {
     int index;
-    int comprobacion=0;
-    //char auxiliarNombre[50]={};
+    int validacion=0;
+    char auxiliarValidacion[50];
 
 
     index=obtenerEspacioLibre(personas, limite);
@@ -53,21 +53,34 @@ void altaPersona (EPersona personas[], int limite)
     {
         printf("\nIngrese el nombre: ");
         fflush(stdin);
-        gets(personas[index].nombre);
-        comprobacion=esChar(personas,index);
+        gets(auxiliarValidacion);
+        validacion=esChar(auxiliarValidacion);
 
-        while (comprobacion==0)
+        while (validacion==0)
         {
                 printf("\nError. Ingrese el nombre: ");
                 fflush(stdin);
-                gets(personas[index].nombre);
-                comprobacion=esChar(personas,index);
+                gets(auxiliarValidacion);
+                validacion=esChar(auxiliarValidacion);
         }
 
+        strcpy(personas[index].nombre,auxiliarValidacion);
 
+        validacion=0;
 
         printf("\nIngrese la edad: ");
         scanf("%d", &personas[index].edad);
+        /*validacion=esInt(auxiliarValidacion);
+
+        while (validacion=0)
+        {
+            printf("\nIngrese la edad: ");
+            scanf("%d", &personas[index].edad);
+            validacion=esInt(auxiliarValidacion);
+
+        }*/
+
+
 
         printf("\nIngrese el DNI: ");
         scanf("%d", &personas[index].dni);
@@ -84,22 +97,39 @@ void altaPersona (EPersona personas[], int limite)
     }
 }
 
-int esChar (EPersona persona[], int indice)
+int esChar (char auxiliar[])
 {
     int i;
     int retorno;
     int limite;
-    char auxiliarNombre[50];
 
-    strcpy(auxiliarNombre, persona[indice].nombre);
-
-    limite=strlen(auxiliarNombre);
-
-
+    limite=strlen(auxiliar);
 
     for (i=0;i<limite;i++)
     {
-        retorno=isalpha(auxiliarNombre[i]);
+        retorno=isalpha(auxiliar[i]);
+
+        if (retorno==0)
+        {
+            break;
+        }
+    }
+
+    return retorno;
+
+}
+
+int esInt(char auxiliar[])
+{
+    int i;
+    int retorno;
+    int limite;
+
+    limite=strlen(auxiliar);
+
+    for (i=0;i<limite;i++)
+    {
+        retorno=isdigit(auxiliar[i]);
 
         if (retorno==0)
         {
