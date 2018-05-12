@@ -44,6 +44,7 @@ void altaPersona (EPersona personas[], int limite)
 {
     int index;
     int validacion=0;
+    int validacionlargo=0;
     char auxiliarValidacion[50];
 
 
@@ -69,21 +70,41 @@ void altaPersona (EPersona personas[], int limite)
         validacion=0;
 
         printf("\nIngrese la edad: ");
-        scanf("%d", &personas[index].edad);
-        /*validacion=esInt(auxiliarValidacion);
+        fflush(stdin);
+        gets(auxiliarValidacion);
+        validacion=esInt(auxiliarValidacion);
+        validacionlargo=strlen(auxiliarValidacion);
 
-        while (validacion=0)
+        while (validacion==0 || validacionlargo>3)
         {
-            printf("\nIngrese la edad: ");
-            scanf("%d", &personas[index].edad);
+            printf("\nError. Ingrese la edad nuevamente: ");
+            fflush(stdin);
+            gets(auxiliarValidacion);
             validacion=esInt(auxiliarValidacion);
+            validacionlargo=strlen(auxiliarValidacion);
+        }
 
-        }*/
+        personas[index].edad=atoi(auxiliarValidacion);
 
 
+        validacion=0;
 
         printf("\nIngrese el DNI: ");
-        scanf("%d", &personas[index].dni);
+        fflush(stdin);
+        gets(auxiliarValidacion);
+        validacion=esInt(auxiliarValidacion);
+        validacionlargo=strlen(auxiliarValidacion);
+
+        while (validacion==0 || validacionlargo>8)
+        {
+            printf("\nError. Ingrese el DNI nuevamente: ");
+            fflush(stdin);
+            gets(auxiliarValidacion);
+            validacion=esInt(auxiliarValidacion);
+            validacionlargo=strlen(auxiliarValidacion);
+        }
+
+        personas[index].dni=atoi(auxiliarValidacion);
 
         personas[index].id=siguienteId(personas,limite);
 
@@ -114,6 +135,8 @@ int esChar (char auxiliar[])
             break;
         }
     }
+
+
 
     return retorno;
 

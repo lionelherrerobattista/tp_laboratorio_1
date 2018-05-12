@@ -65,7 +65,13 @@ void altaPersona (EPersona[], int);
  */
 int esChar(char[]);
 
-//int esInt(char[]);
+/** \brief Verifica que se hayan ingresado solo numeros
+ *
+ * \param char[] variable auxiliar de verificación
+ * \return int devuelve 0 si no es numero
+ *
+ */
+int esInt(char[]);
 
 
 /** \brief Busca el id libre que sigue al último utilizado
