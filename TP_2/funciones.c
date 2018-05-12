@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <strings.h>
 #include <ctype.h>
+#include <conio.h>
 #include "funciones.h"
 
 #define LIBRE 0
@@ -241,26 +242,35 @@ void borrarPersona (EPersona personas[], int limite)
     int id;
     int i;
     int flag=0;
+    char respuesta;
 
 
 
     printf("\nIngrese el id de la persona que quiere borrar: ");
     scanf("%d",&id);
 
+    printf("\nEsta seguro que desea continuar? (s/n)\n");
+    respuesta=getch();
 
-    for (i=0; i<limite; i++)
+    if(respuesta=='s')
     {
-        if (personas[i].id==id)
+        for (i=0; i<limite; i++)
         {
-           personas[i].estado=LIBRE;
-           flag=1;
+            if (personas[i].id==id)
+            {
+               personas[i].estado=LIBRE;
+               flag=1;
+            }
         }
+
+        if(flag==0)
+        {
+            printf("\nEl id ingresado no es valido.\n");
+        }
+
     }
 
-    if(flag==0)
-    {
-        printf("\nEl id ingresado no es valido.\n");
-    }
+
 }
 
 void graficoEdad (EPersona personas[], int limite)
