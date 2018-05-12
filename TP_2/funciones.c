@@ -44,7 +44,7 @@ void altaPersona (EPersona personas[], int limite)
 {
     int index;
     int comprobacion=0;
-    char auxiliarNombre[50]={};
+    //char auxiliarNombre[50]={};
 
 
     index=obtenerEspacioLibre(personas, limite);
@@ -53,17 +53,17 @@ void altaPersona (EPersona personas[], int limite)
     {
         printf("\nIngrese el nombre: ");
         fflush(stdin);
-        gets(auxiliarNombre);
-        comprobacion=esChar(auxiliarNombre);
+        gets(personas[index].nombre);
+        comprobacion=esChar(personas,index);
 
         while (comprobacion==0)
         {
                 printf("\nError. Ingrese el nombre: ");
                 fflush(stdin);
-                gets(auxiliarNombre);
-                comprobacion=esChar(auxiliarNombre);
+                gets(personas[index].nombre);
+                comprobacion=esChar(personas,index);
         }
-        strcpy(personas[index].nombre,auxiliarNombre);
+
 
 
         printf("\nIngrese la edad: ");
@@ -84,18 +84,27 @@ void altaPersona (EPersona personas[], int limite)
     }
 }
 
-int esChar (char auxiliar[])
+int esChar (EPersona persona[], int indice)
 {
     int i;
     int retorno;
     int limite;
+    char auxiliarNombre[50];
 
-    limite=strlen(auxiliar);
+    strcpy(auxiliarNombre, persona[indice].nombre);
+
+    limite=strlen(auxiliarNombre);
+
 
 
     for (i=0;i<limite;i++)
     {
-        retorno=isalpha(auxiliar[i]);
+        retorno=isalpha(auxiliarNombre[i]);
+
+        if (retorno==0)
+        {
+            break;
+        }
     }
 
     return retorno;
