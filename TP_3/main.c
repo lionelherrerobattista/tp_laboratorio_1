@@ -22,6 +22,7 @@ int main()
     }
 
     incializarPeliculas(listadepeliculas, CANTIDADPELICULAS);
+    hardcodePeliculas(listadepeliculas, CANTIDADPELICULAS);
 
 
 

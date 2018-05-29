@@ -19,6 +19,29 @@ void incializarPeliculas(EMovie* movie, int limite)
     }
 }
 
+void hardcodePeliculas(EMovie* movie,int limite)
+{
+
+    int i;
+    char titulos[][50]={"Back to the future","El Padrino","La Lista de Schindler"};
+    char generos[][50]={"Aventura","Drama","Historico"};
+    int puntajes[3]={86,92,90};
+    int duracion[3]={116,175,195};
+
+    for (i=0;i<3;i++)
+    {
+        strcpy((movie+i)->titulo,titulos[i]);
+        strcpy((movie+i)->genero,generos[i]);
+        (movie+i)->puntaje=puntajes[i];
+        (movie+i)->duracion=duracion[i];
+        (movie+i)->id=i+1;
+        (movie+i)->estado=OCUPADO;
+
+    }
+
+
+}
+
 int agregarPelicula(EMovie* movie,int limite)
 {
     int index;
@@ -219,13 +242,13 @@ void mostrarPelicula(EMovie* movie,int limite)
 {
     int i;
 
-    printf("%-10s %-10s %-10s %-10s %-10s %-15s\n", "Id:", "Titulo","Genero","Duracion","Descripcion","Puntaje");
+    printf("%-5s %-25s %-20s %-20s %-20s\n", "Id:", "Titulo","Genero","Duracion","Puntaje");
 
     for(i=0;i<limite;i++)
     {
         if((movie+i)->estado==1)
         {
-           printf("%-10d %-10s %-10s %-10d %-10s %-15d\n",(movie+i)->id,(movie+i)->titulo,(movie+i)->genero,(movie+i)->duracion,(movie+i)->descripcion,(movie+i)->puntaje);
+           printf("%-5d %-25s %-20s %-20d %-20d\n",(movie+i)->id,(movie+i)->titulo,(movie+i)->genero,(movie+i)->duracion,(movie+i)->puntaje);
 
         }
 
@@ -368,7 +391,33 @@ int modificarPelicula(EMovie* movie,int limite)
 
     return retorno;
 
-
 }
+
+void generarPagina(EMovie lista[], char nombre[])
+{
+    FILE* paginaWeb;
+    char buffer[1080]={};
+
+    paginaWeb=fopen("peliculas.html","w");
+
+    fprintf(paginaWeb,"<article class='col-md-4 article-intro'>");
+    fprintf(paginaWeb,"<a href='#'>");
+    fprintf(paginaWeb,"<img class='img-responsive img-rounded' src='http://ia.mediaimdb.com/images/M/MV5BMjA5NTYzMDMyM15BMl5BanBnXkFtZTgwNjU3NDU2MTE@._V1_UX182_CR0,0,182,268_AL_.jpg'alt=''>");
+ </a>
+ <h3>
+ <a href='#'>Back to the future</a>
+ </h3>
+<ul>
+<li>Género:Aventura</li>
+<li>Puntaje:86</li>
+<li>Duración:116</li>
+</ul>
+ <p>A young man is accidentally sent thirty years into the past in a time-traveling
+DeLorean invented by his friend, Dr. Emmett Brown, and must make sure his high-school-age parents
+unite in order to save his own existence.</p>
+</article>
+}
+
+
 
 

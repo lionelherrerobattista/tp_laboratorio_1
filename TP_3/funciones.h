@@ -2,8 +2,8 @@
 #define FUNCIONES_H_INCLUDED
 
 typedef struct{
-    char titulo[20];
-    char genero[20];
+    char titulo[50];
+    char genero[50];
     int duracion;
     char descripcion[50];
     int puntaje;
@@ -41,6 +41,7 @@ void incializarPeliculas(EMovie*, int);
 void mostrarPelicula(EMovie*,int);
 int siguienteId(EMovie*, int);
 int modificarPelicula(EMovie*,int);
+void hardcodePeliculas(EMovie*,int);
 
 
 
