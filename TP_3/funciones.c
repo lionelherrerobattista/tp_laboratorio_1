@@ -396,8 +396,11 @@ int modificarPelicula(EMovie* movie,int limite)
 void generarPagina(EMovie lista[], char nombre[],int limite)
 {
     FILE* paginaWeb;
-    char buffer[1080]={};
+    char buffer[2000]={};
     int i;
+    char numero[50]={};
+
+
 
     strcat(nombre,".html");
 
@@ -425,10 +428,12 @@ void generarPagina(EMovie lista[], char nombre[],int limite)
             strcat(buffer,lista[i].genero);
             strcat(buffer,"</li>"
                         "<li>Puntaje: ");
-            //strcat(buffer,lista[i].puntaje);
+            sprintf(numero,"%d",lista[i].puntaje);
+            strcat(buffer,numero);
             strcat(buffer,"</li>"
                             "<li>Duración: ");
-            //strcat(buffer,lista[i].duracion);
+            sprintf(numero,"%d",lista[i].duracion);
+            strcat(buffer,numero);
             strcat(buffer,"</li>"
                             "</ul>"
                             "<p>");
