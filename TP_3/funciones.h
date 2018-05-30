@@ -31,7 +31,7 @@ int borrarPelicula(EMovie*,int);
  *  @param lista la lista de peliculas a ser agregadas en el archivo.
  *  @param nombre el nombre para el archivo.
  */
-void generarPagina(EMovie lista[], char nombre[],int);
+int generarPagina(EMovie lista[], char nombre[],int);
 
 int obtenerEspacioLibre(EMovie*, int);
 int esChar (char[]);

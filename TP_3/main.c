@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funciones.h"
-#define CANTIDADPELICULAS 4
+#define CANTIDADPELICULAS 5
 
 
 int main()
@@ -11,6 +11,7 @@ int main()
 
     int retorno;
     char nombrePagina[50];
+
 
     EMovie listadepeliculas[CANTIDADPELICULAS];
 
@@ -31,13 +32,19 @@ int main()
 
     while(seguir=='s')
     {
-        printf("1- Agregar pelicula\n");
+        printf("\n1- Agregar pelicula\n");
         printf("2- Borrar pelicula\n");
         printf("3- Modificar pelicula\n");
         printf("4- Generar pagina web\n");
         printf("5- Salir\n");
 
         scanf("%d",&opcion);
+
+        while (opcion<1 || opcion>5)
+        {
+            printf("\nError. Ingrese la opcion nuevamente: ");
+            scanf("%d",&opcion);
+        }
 
         switch(opcion)
         {
@@ -57,17 +64,16 @@ int main()
                 mostrarPelicula(listadepeliculas,CANTIDADPELICULAS);
                 if(borrarPelicula(listadepeliculas,CANTIDADPELICULAS))
                 {
-                    printf("Se borro la pelicula seleccionada.\n");
+                    printf("\nSe borro la pelicula seleccionada.");
                 }
                 else
                 {
-                    printf("No se pudo borrar la pelicula.\n");
+                    printf("\nNo se pudo borrar la pelicula.\n");
                 }
                 generarArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
-
-
                 break;
             case 3:
+                mostrarPelicula(listadepeliculas,CANTIDADPELICULAS);
                 if(modificarPelicula(listadepeliculas,CANTIDADPELICULAS))
                 {
                     printf("Modificacion exitosa.");
@@ -82,20 +88,18 @@ int main()
                 printf("Ingrese el nombre del archivo:");
                 fflush(stdin);
                 gets(nombrePagina);
-                generarPagina(listadepeliculas,nombrePagina,CANTIDADPELICULAS);
+                retorno=generarPagina(listadepeliculas,nombrePagina,CANTIDADPELICULAS);
+                if(retorno==1)
+                {
+                    printf("\nSe genero la pagina con exito.\n");
+                }
+                else
+                {
+                    printf("\nError al generar la pagina.\n");
+                }
                 break;
             case 5:
-
                 seguir = 'n';
-                break;
-            case 6:
-                generarArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
-                break;
-            case 7:
-                leerArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
-                break;
-            case 8:
-                mostrarPelicula(listadepeliculas,CANTIDADPELICULAS);
                 break;
         }
     }
