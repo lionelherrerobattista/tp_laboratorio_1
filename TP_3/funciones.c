@@ -47,6 +47,17 @@ void hardcodePeliculas(EMovie* movie,int limite)
 
     fclose(miArchivo);
 
+    miArchivo=fopen("imagenes.txt","r");
+
+    for (i=0;i<3;i++)
+    {
+
+        fgets((movie+i)->linkImagen,500,miArchivo);
+
+    }
+
+    fclose(miArchivo);
+
 
 }
 

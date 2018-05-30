@@ -18,6 +18,8 @@ int main()
     hardcodePeliculas(listadepeliculas, CANTIDADPELICULAS);
     leerArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
 
+    printf("%s",listadepeliculas[1].linkImagen);
+
 
 
 
