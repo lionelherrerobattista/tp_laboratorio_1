@@ -10,6 +10,7 @@ int main()
     int opcion=0;
     int i;
     int retorno;
+    char nombrePagina[50];
 
     EMovie listadepeliculas[CANTIDADPELICULAS];
     EMovie* punteropeliculas[CANTIDADPELICULAS];
@@ -37,8 +38,9 @@ int main()
     {
         printf("1- Agregar pelicula\n");
         printf("2- Borrar pelicula\n");
-        printf("3- Generar pagina web\n");
-        printf("4- Salir\n");
+        printf("3- Modificar pelicula\n");
+        printf("4- Generar pagina web\n");
+        printf("5- Salir\n");
 
         scanf("%d",&opcion);
 
@@ -77,9 +79,14 @@ int main()
                 }
                break;
             case 4:
-                seguir = 'n';
+                printf("Ingrese el nombre del archivo:");
+                fflush(stdin);
+                gets(nombrePagina);
+                generarPagina(listadepeliculas,nombrePagina);
+                break;
             case 5:
                 mostrarPelicula(listadepeliculas,CANTIDADPELICULAS);
+                seguir = 'n';
                 break;
         }
     }

@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1527549355 source:c:\users\lion_\desktop\nueva carpeta\tp_laboratorio_1\tp_3\main.c
+1527688155 source:c:\users\lion_\desktop\nueva carpeta\tp_laboratorio_1\tp_3\main.c
 	<stdio.h>
 	<stdlib.h>
 	"funciones.h"
 
-1527557253 c:\users\lion_\desktop\nueva carpeta\tp_laboratorio_1\tp_3\funciones.h
+1527685356 c:\users\lion_\desktop\nueva carpeta\tp_laboratorio_1\tp_3\funciones.h
 
 1527528416 source:c:\users\lion_\desktop\nueva carpeta\tp_laboratorio_1\tp_3\funiones.c
 	<stdlib.h>
@@ -14,7 +14,7 @@
 	<conio.h>
 	"funciones.h"
 
-1527556391 source:c:\users\lion_\desktop\nueva carpeta\tp_laboratorio_1\tp_3\funciones.c
+1527687219 source:c:\users\lion_\desktop\nueva carpeta\tp_laboratorio_1\tp_3\funciones.c
 	<stdlib.h>
 	<stdio.h>
 	<strings.h>
