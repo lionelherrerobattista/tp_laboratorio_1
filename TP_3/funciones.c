@@ -393,20 +393,63 @@ int modificarPelicula(EMovie* movie,int limite)
 
 }
 
-void generarPagina(EMovie lista[], char nombre[])
+void generarPagina(EMovie lista[], char nombre[],int limite)
 {
     FILE* paginaWeb;
-    //char buffer[1080]={};
+    char buffer[1080]={};
+    int i;
+
     strcat(nombre,".html");
 
     paginaWeb=fopen(nombre,"w");
 
-    fprintf(paginaWeb,"<article class='col-md-4 article-intro'>");
+    for(i=0;i<limite;i++)
+    {
+        if(lista[i].estado==OCUPADO)
+        {
+            memset(buffer,0,sizeof(buffer));
+
+            strcat(buffer,"<article class='col-md-4 article-intro'>"
+                    "<a href='#'>"
+                        "<img class='img-responsive img-rounded' src='");
+            strcat(buffer,lista[i].linkImagen);
+            strcat(buffer,"'alt=''>"
+                             "</a>"
+                             "<h3>"
+                                "<a href='#'>");
+            strcat(buffer,lista[i].titulo);
+            strcat(buffer,"</a>"
+                            "</h3>"
+                        "<ul>"
+                            "<li>Género: ");
+            strcat(buffer,lista[i].genero);
+            strcat(buffer,"</li>"
+                        "<li>Puntaje: ");
+            //strcat(buffer,lista[i].puntaje);
+            strcat(buffer,"</li>"
+                            "<li>Duración: ");
+            //strcat(buffer,lista[i].duracion);
+            strcat(buffer,"</li>"
+                            "</ul>"
+                            "<p>");
+            strcat(buffer,lista[i].descripcion);
+            strcat(buffer,"</p>"
+                        "</article>");
+
+            fprintf(paginaWeb, buffer);
+
+        }
+
+    }
+
+
+
+    /*fprintf(paginaWeb,"<article class='col-md-4 article-intro'>");
     fprintf(paginaWeb,"<a href='#'>");
     fprintf(paginaWeb,"<img class='img-responsive img-rounded' src='http://ia.mediaimdb.com/images/M/MV5BMjA5NTYzMDMyM15BMl5BanBnXkFtZTgwNjU3NDU2MTE@._V1_UX182_CR0,0,182,268_AL_.jpg'alt=''>");
     fprintf(paginaWeb,"</a><h3><a href='#'>Back to the future</a></h3><ul><li>Género:Aventura</li><li>Puntaje:86</li><li>Duración:116</li></ul>");
     fprintf(paginaWeb,"<p>A young man is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his friend, Dr. Emmett Brown, and must make sure his high-school-age parents unite in order to save his own existence.</p>");
-    fprintf(paginaWeb,"</article>");
+    fprintf(paginaWeb,"</article>");*/
 
     fclose(paginaWeb);
 }

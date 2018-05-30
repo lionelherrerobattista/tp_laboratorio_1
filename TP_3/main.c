@@ -82,7 +82,7 @@ int main()
                 printf("Ingrese el nombre del archivo:");
                 fflush(stdin);
                 gets(nombrePagina);
-                generarPagina(listadepeliculas,nombrePagina);
+                generarPagina(listadepeliculas,nombrePagina,CANTIDADPELICULAS);
                 break;
             case 5:
                 mostrarPelicula(listadepeliculas,CANTIDADPELICULAS);
