@@ -455,8 +455,11 @@ int generarPagina(EMovie lista[], char nombre[],int limite)
 
     if (flag==0)
     {
+        fprintf(paginaWeb,"<html><head><center><h1><u>Lista de películas</u><h/1></center></html></head>");
+
         for(i=0;i<limite;i++)
         {
+
             if(lista[i].estado==OCUPADO)
             {
                 memset(buffer,0,sizeof(buffer));
