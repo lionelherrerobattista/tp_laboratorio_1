@@ -5,7 +5,7 @@ typedef struct{
     char titulo[50];
     char genero[50];
     int duracion;
-    char descripcion[50];
+    char descripcion[500];
     int puntaje;
     char linkImagen[50];
     int estado;
@@ -42,6 +42,8 @@ void mostrarPelicula(EMovie*,int);
 int siguienteId(EMovie*, int);
 int modificarPelicula(EMovie*,int);
 void hardcodePeliculas(EMovie*,int);
+void generarArchivoBinario(EMovie*,int);
+void leerArchivoBinario(EMovie*,int);
 
 
 

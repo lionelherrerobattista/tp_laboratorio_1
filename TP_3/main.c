@@ -8,22 +8,15 @@ int main()
 {
     char seguir='s';
     int opcion=0;
-    int i;
+
     int retorno;
     char nombrePagina[50];
 
     EMovie listadepeliculas[CANTIDADPELICULAS];
-    EMovie* punteropeliculas[CANTIDADPELICULAS];
-
-
-
-    for(i=0;i<CANTIDADPELICULAS;i++)
-    {
-        punteropeliculas[i]=&listadepeliculas[i];
-    }
 
     incializarPeliculas(listadepeliculas, CANTIDADPELICULAS);
     hardcodePeliculas(listadepeliculas, CANTIDADPELICULAS);
+    leerArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
 
 
 
@@ -87,6 +80,12 @@ int main()
             case 5:
                 mostrarPelicula(listadepeliculas,CANTIDADPELICULAS);
                 seguir = 'n';
+                break;
+            case 6:
+                generarArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
+                break;
+            case 7:
+                leerArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
                 break;
         }
     }

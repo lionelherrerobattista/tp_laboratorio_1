@@ -28,6 +28,11 @@ void hardcodePeliculas(EMovie* movie,int limite)
     int puntajes[3]={86,92,90};
     int duracion[3]={116,175,195};
 
+    FILE* miArchivo;
+
+    miArchivo=fopen("sinopsis.txt","r");
+
+
     for (i=0;i<3;i++)
     {
         strcpy((movie+i)->titulo,titulos[i]);
@@ -36,8 +41,11 @@ void hardcodePeliculas(EMovie* movie,int limite)
         (movie+i)->duracion=duracion[i];
         (movie+i)->id=i+1;
         (movie+i)->estado=OCUPADO;
+        fgets((movie+i)->descripcion,500,miArchivo);
 
     }
+
+    fclose(miArchivo);
 
 
 }
@@ -428,7 +436,7 @@ void generarPagina(EMovie lista[], char nombre[],int limite)
             strcat(buffer,lista[i].genero);
             strcat(buffer,"</li>"
                         "<li>Puntaje: ");
-            sprintf(numero,"%d",lista[i].puntaje);
+            sprintf(numero,"%d",lista[i].puntaje);//copia int en un buffer char
             strcat(buffer,numero);
             strcat(buffer,"</li>"
                             "<li>Duración: ");
@@ -448,15 +456,54 @@ void generarPagina(EMovie lista[], char nombre[],int limite)
     }
 
 
-
-    /*fprintf(paginaWeb,"<article class='col-md-4 article-intro'>");
-    fprintf(paginaWeb,"<a href='#'>");
-    fprintf(paginaWeb,"<img class='img-responsive img-rounded' src='http://ia.mediaimdb.com/images/M/MV5BMjA5NTYzMDMyM15BMl5BanBnXkFtZTgwNjU3NDU2MTE@._V1_UX182_CR0,0,182,268_AL_.jpg'alt=''>");
-    fprintf(paginaWeb,"</a><h3><a href='#'>Back to the future</a></h3><ul><li>Género:Aventura</li><li>Puntaje:86</li><li>Duración:116</li></ul>");
-    fprintf(paginaWeb,"<p>A young man is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his friend, Dr. Emmett Brown, and must make sure his high-school-age parents unite in order to save his own existence.</p>");
-    fprintf(paginaWeb,"</article>");*/
-
     fclose(paginaWeb);
+}
+
+void generarArchivoBinario(EMovie* movie,int limite)
+{
+    FILE* binario;
+    int i;
+
+    binario=fopen("peliculas.dat","wb");
+
+    for(i=0;i<limite;i++)
+    {
+        if((movie+i)->estado==OCUPADO)
+        {
+            fwrite(movie+i,sizeof(movie),8,binario);
+        }
+
+    }
+
+
+    fclose(binario);
+
+}
+
+void leerArchivoBinario(EMovie* movie,int limite)
+{
+    FILE* miArchivo;
+    int i;
+
+    miArchivo=fopen("peliculas.dat","rb");
+
+    for(i=0;i<limite;i++)
+    {
+            fread((movie+i),sizeof(movie),8,miArchivo);
+
+
+            if((movie+i)->estado==OCUPADO)
+            {
+
+                printf("%s\n",(movie+i)->titulo);
+            }
+
+    }
+
+
+    fclose(miArchivo);
+
+
 }
 
 
