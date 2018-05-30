@@ -23,7 +23,7 @@ void hardcodePeliculas(EMovie* movie,int limite)
 {
 
     int i;
-    char titulos[][50]={"Back to the future","El Padrino","La Lista de Schindler"};
+    char titulos[][100]={"Back to the future","El Padrino","La Lista de Schindler"};
     char generos[][50]={"Aventura","Drama","Historico"};
     int puntajes[3]={86,92,90};
     int duracion[3]={116,175,195};
@@ -74,20 +74,8 @@ int agregarPelicula(EMovie* movie,int limite)
     {
         printf("\nIngrese el titulo de la pelicula: ");
         fflush(stdin);
-        gets(auxiliarValidacion);
+        gets((movie+index)->titulo);
         validacion=esChar(auxiliarValidacion);
-
-        while (validacion==0)
-        {
-                printf("\nError. Ingrese el titulo nuevamente: ");
-                fflush(stdin);
-                gets(auxiliarValidacion);
-                validacion=esChar(auxiliarValidacion);
-        }
-
-        strcpy((movie+index)->titulo,auxiliarValidacion);
-
-        validacion=0;
 
         printf("\nIngrese el genero de la pelicula: ");
         fflush(stdin);
@@ -194,17 +182,21 @@ int obtenerEspacioLibre(EMovie* movie, int limite)
 int esChar (char auxiliar[])
 {
     int i;
-    int retorno;
+    int espacio;
+    int caracter;
     int limite;
+    int retorno=1;
 
     limite=strlen(auxiliar);
 
     for (i=0;i<limite;i++)
     {
-        retorno=isalpha(auxiliar[i]);
+        caracter=isalpha(auxiliar[i]);//0 si no es carácter
+        espacio=isspace(auxiliar[i]);//0 si no es espacio
 
-        if (retorno==0)
+        if (caracter==0 && espacio==0)
         {
+            retorno=0;
             break;
         }
     }
@@ -481,7 +473,7 @@ void generarArchivoBinario(EMovie* movie,int limite)
     {
         if((movie+i)->estado==OCUPADO)
         {
-            fwrite(movie+i,sizeof(movie),8,binario);
+            fwrite((movie+i),sizeof(EMovie),1,binario);
         }
 
     }
@@ -500,7 +492,7 @@ void leerArchivoBinario(EMovie* movie,int limite)
 
     for(i=0;i<limite;i++)
     {
-            fread((movie+i),sizeof(movie),8,miArchivo);
+            fread(movie+i,sizeof(EMovie),1,miArchivo);
 
 
             if((movie+i)->estado==OCUPADO)

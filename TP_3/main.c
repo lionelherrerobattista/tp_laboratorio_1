@@ -15,10 +15,10 @@ int main()
     EMovie listadepeliculas[CANTIDADPELICULAS];
 
     incializarPeliculas(listadepeliculas, CANTIDADPELICULAS);
-    hardcodePeliculas(listadepeliculas, CANTIDADPELICULAS);
+    //hardcodePeliculas(listadepeliculas, CANTIDADPELICULAS);
     leerArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
 
-    printf("%s",listadepeliculas[1].linkImagen);
+
 
 
 
@@ -51,6 +51,7 @@ int main()
                 {
                     printf("No se pudo cargar la pelicula.\n");
                 }
+                generarArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
                 break;
             case 2:
                 mostrarPelicula(listadepeliculas,CANTIDADPELICULAS);
@@ -62,6 +63,9 @@ int main()
                 {
                     printf("No se pudo borrar la pelicula.\n");
                 }
+                generarArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
+
+
                 break;
             case 3:
                 if(modificarPelicula(listadepeliculas,CANTIDADPELICULAS))
@@ -72,6 +76,7 @@ int main()
                 {
                     printf("No se pudo modificar.");
                 }
+                generarArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
                break;
             case 4:
                 printf("Ingrese el nombre del archivo:");
@@ -80,7 +85,7 @@ int main()
                 generarPagina(listadepeliculas,nombrePagina,CANTIDADPELICULAS);
                 break;
             case 5:
-                mostrarPelicula(listadepeliculas,CANTIDADPELICULAS);
+
                 seguir = 'n';
                 break;
             case 6:
@@ -88,6 +93,9 @@ int main()
                 break;
             case 7:
                 leerArchivoBinario(listadepeliculas,CANTIDADPELICULAS);
+                break;
+            case 8:
+                mostrarPelicula(listadepeliculas,CANTIDADPELICULAS);
                 break;
         }
     }
